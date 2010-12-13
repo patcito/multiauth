@@ -6,7 +6,7 @@ module Multiauth
 
       puts ">>>>>>>>> #{user_signed_in?} #{self.current_user}"
       if user_signed_in?
-        self.current_user.connect(fields)
+        self.current_user.connect(fields, params)
         redirect_to user_path(self.current_user)
         return
       elsif (@user = User.authenticate(fields)) && (!@user.new_record?)
