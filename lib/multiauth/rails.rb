@@ -32,7 +32,7 @@ module Multiauth
           next if config["token"].blank?
 
           puts ">> Setting up #{provider} provider"
-          Devise.omniauth provider.underscore.to_sym, config["id"], config["token"]
+          Devise.omniauth provider.underscore.to_sym, config["id"], config["token"], (config["options"].nil?) ? {} : config["options"]
         end
       else
         $stderr.puts "Config file doesn't exist: #{config_file}"
